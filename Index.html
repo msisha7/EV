@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-Predictor | Ultimate Exam Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo"><i class="fa-solid fa-graduation-cap"></i> X-PREDICTOR</div>
+            <p>Predict your Rank, Percentile & Marks with Precision</p>
+        </header>
+
+        <div class="exam-tabs">
+            <button class="tab-btn active" onclick="switchExam('jee')"><i class="fa-solid fa-atom"></i> JEE Main</button>
+            <button class="tab-btn" onclick="switchExam('neet')"><i class="fa-solid fa-stethoscope"></i> NEET</button>
+            <button class="tab-btn" onclick="switchExam('generic')"><i class="fa-solid fa-arrow-trend-up"></i> Other Exams</button>
+        </div>
+
+        <div class="main-card">
+            <div class="input-section">
+                <h3 id="form-title">JEE Main Analysis</h3>
+                
+                <div class="input-group">
+                    <label for="input-type">Select What You Know:</label>
+                    <select id="input-type" onchange="toggleInputs()">
+                        <option value="marks">Expected Marks</option>
+                        <option value="percentile">Percentile</option>
+                    </select>
+                </div>
+
+                <div class="input-group" id="marks-group">
+                    <label for="user-marks">Enter Your Marks:</label>
+                    <input type="number" id="user-marks" placeholder="e.g., 180" min="0">
+                    <span class="max-info" id="max-marks-info">Out of 300</span>
+                </div>
+
+                <div class="input-group hidden" id="percentile-group">
+                    <label for="user-percentile">Enter Your Percentile:</label>
+                    <input type="number" id="user-percentile" placeholder="e.g., 99.2" step="0.0001" min="0" max="100">
+                </div>
+
+                <button class="cta-btn" onclick="calculateData()">Calculate Analytics <i class="fa-solid fa-bolt"></i></button>
+            </div>
+
+            <div class="result-section hidden" id="results">
+                <h3><i class="fa-solid fa-chart-pie"></i> Your Predicted Insights</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">Estimated Rank</span>
+                        <span class="stat-value" id="res-rank">--</span>
+                        <span class="stat-sub" id="res-rank-type">AIR (General)</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Percentile</span>
+                        <span class="stat-value" id="res-percentile">--</span>
+                        <span class="stat-sub">Based on trends</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Score/Status</span>
+                        <span class="stat-value" id="res-marks">--</span>
+                        <span class="stat-sub" id="res-status">Qualified</span>
+                    </div>
+                </div>
+
+                <div class="college-predictor">
+                    <h4><i class="fa-solid fa-building-columns"></i> Premium Insights</h4>
+                    <p id="college-tip">Enter details to see top eligible institutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
